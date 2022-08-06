@@ -1,23 +1,58 @@
+from email.mime import application
+from itertools import tee
+import json
 import os
 import argparse
 import sys
 import logging
 import time
+import telegram
+from telegram import *
+from telegram_handler import TelegramLoggingHandler
 
 
+# Upload json and convert to tuple
+settings_json = open('settings.json')
+data = json.load(settings_json)
 
+# Initialize token and chat_id
+token = data['token']
+chat_id = data['chat_id']
 
+# Init BOT
+BOT = telegram.Bot(token)
+
+# parser arguments creating
 parser = argparse.ArgumentParser()
 
 parser.add_argument('-d', '--target-dir-name', type=str, default='Downloads')
-parser.add_argument('-D', '--debug', action='store_const', dest='loglevel',
-                    const=logging.DEBUG, default=logging.INFO)
+parser.add_argument('-D', '--debug', action='store_true')
 parser.add_argument('-S', '--show-config', action='store_true')
 parser.add_argument('-W', '--watch', action='store_true')
+parser.add_argument('-T', '--telegram-logs', action='store_true')
 
 ARG = parser.parse_args()
-logging.basicConfig(level=ARG.loglevel)
+
 logger = logging.getLogger('file_manager')
+
+def logs_for_telegram_handlers(token, chat_id, logger):
+    try:
+        telegram_log_handler = TelegramLoggingHandler(token, chat_id)
+        logger.addHandler(logging.StreamHandler())
+        logger.addHandler(telegram_log_handler)
+    except Exception as e:
+        logger.info(f"Exception definition is like: {e}")
+
+# debug statement
+if ARG.debug: 
+    log_level = level=logging.DEBUG
+elif ARG.telegram_logs:
+    log_level = logging.DEBUG
+    logs_for_telegram_handlers(token=token, chat_id=chat_id, logger=logger)
+else:
+    log_level = logging.INFO
+    
+logging.basicConfig(level=log_level)
 
 dir_mapping = {
     'Images': ('jpg', 'png', 'tiff', 'gif', 'jpeg', 'bmp'), 
@@ -80,6 +115,7 @@ def move_file(src_path, destination_path):
         logger.error(f'Exception name: {e}')
 
 
+
 def dir_handler(dir_mapping, user_root): 
     user_file_list = get_downloads_filelist(user_root)       
     for user_file_path in user_file_list:
@@ -107,9 +143,6 @@ if ARG.watch:
         dir_handler( dir_mapping, user_root)
 
 
-
-
-    
 
 # bootlepy 
 # fastapi 
