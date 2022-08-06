@@ -143,6 +143,7 @@ if ARG.watch:
         dir_handler( dir_mapping, user_root)
 
 
+<<<<<<< HEAD
 
 # bootlepy 
 # fastapi 
@@ -154,3 +155,5 @@ if ARG.watch:
 # watch argument for argparse if it's true code should work all the time * using while(True), time.sleep Done
 # do code review, reread it one more time Done
 # must have, all most popular methods for lists, stings, dicts, don't forget about this stuff ()!!!!!!!! Diference between functions and methods 
+=======
+>>>>>>> f648cc38a44061ee420a8972c076d1de48466cff
