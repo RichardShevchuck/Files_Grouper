@@ -141,19 +141,3 @@ if ARG.watch:
     while True:
         user_file_list = get_downloads_filelist(user_root)
         dir_handler( dir_mapping, user_root)
-
-
-<<<<<<< HEAD
-
-# bootlepy 
-# fastapi 
-# pewee orm
-# read about functions, byte of python, Luts, lists, all about this code, os modules, one more time FUNCTION !, os.path.join how it works
-# argparse read about, do some exercises with it, one more program
-# dicts methods (items, values, keys, update, pop), how to take values using keys, dict function, convert dict_mapping using dict function
-# import logging and use it for debug messages * Done
-# watch argument for argparse if it's true code should work all the time * using while(True), time.sleep Done
-# do code review, reread it one more time Done
-# must have, all most popular methods for lists, stings, dicts, don't forget about this stuff ()!!!!!!!! Diference between functions and methods 
-=======
->>>>>>> f648cc38a44061ee420a8972c076d1de48466cff
