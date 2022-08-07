@@ -84,6 +84,7 @@ if ARG.watch:
     while True:
         do_sleep(ARG.watch_interval)
         user_file_list = get_downloads_filelist(user_root)
+<<<<<<< HEAD
         scan_dir(dir_mapping, user_root)
 else: # regular setup 
     scan_dir(dir_mapping, user_root)
@@ -107,3 +108,6 @@ else: # regular setup
 # do Traceback*
 # all any instead of if or Done
 # docker !!!!!!!!!
+=======
+        dir_handler( dir_mapping, user_root)
+>>>>>>> 269c01da171a89e9718e453d88fc338b9bfb510c
