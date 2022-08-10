@@ -90,24 +90,3 @@ else: # regular setup
     scan_dir(dir_mapping, user_root)
         
 
-
-
-# bootlepy 
-# fastapi 
-# pewee orm
-# read about functions, byte of python, Luts, lists, all about this code, os modules, one more time FUNCTION !, os.path.join how it works
-# argparse read about, do some exercises with it, one more program
-# dicts methods (items, values, keys, update, pop), how to take values using keys, dict function, convert dict_mapping using dict function
-# do code review, reread it one more time 
-# must have, all most popular methods for lists, stings, dicts, don't forget about this stuff ()!!!!!!!! Diference between functions and methods
-
-
-# move all functions to a new file(do not name file like function or etc. it could be like helpers, utils, core) Done
-# make settings.json like argument, and all stuff for it make like a function (name=readconfig, return dict), Done
-# do if statement for json reader Done
-# do Traceback*
-# all any instead of if or Done
-# docker !!!!!!!!!
-=======
-        dir_handler( dir_mapping, user_root)
->>>>>>> 269c01da171a89e9718e453d88fc338b9bfb510c
